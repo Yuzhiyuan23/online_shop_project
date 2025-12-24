@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>我的购物车</h3>
+<table class="table bg-white shadow-sm">
+    <thead><tr><th>名称</th><th>单价</th><th>数量</th><th>小计</th><th>操作</th></tr></thead>
+    <tbody>
+        {% for p in products %}
+        <tr>
+            <td>{{ p.name }}</td><td>￥{{ p.price }}</td><td>{{ p.qty }}</td><td>￥{{ p.sub }}</td>
+            <td><a href="/del_cart/{{ p.id }}" class="text-danger">删除</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="text-end">
+    <h4>总额：￥{{ total }}</h4>
+    <form action="/checkout" method="POST"><button class="btn btn-success btn-lg">结算并清空</button></form>
+</div>
+{% endblock %}

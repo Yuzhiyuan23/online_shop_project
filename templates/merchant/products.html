@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="/merchant" class="list-group-item">销售统计</a>
+            <a href="/merchant/products" class="list-group-item active">商品管理</a>
+            <a href="/merchant/orders" class="list-group-item">订单管理</a>
+            <a href="/merchant/customers" class="list-group-item">客户日志</a>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card p-3 mb-4">
+            <h5>上架新商品</h5>
+            <form method="POST" class="row g-2">
+                <div class="col-4"><input name="name" placeholder="名称" class="form-control" required></div>
+                <div class="col-2"><input name="price" placeholder="价格" class="form-control" required></div>
+                <div class="col-2"><input name="stock" placeholder="库存" class="form-control" required></div>
+                <div class="col-3"><input name="desc" placeholder="描述" class="form-control"></div>
+                <div class="col-1"><button class="btn btn-success">加</button></div>
+            </form>
+        </div>
+        <table class="table table-striped bg-white">
+            <thead><tr><th>ID</th><th>名称</th><th>单价</th><th>库存</th><th>操作</th></tr></thead>
+            <tbody>
+                {% for p in products %}
+                <tr>
+                    <td>{{ p.id }}</td><td>{{ p.name }}</td><td>{{ p.price }}</td><td>{{ p.stock }}</td>
+                    <td><a href="/merchant/del_p/{{ p.id }}" class="text-danger" onclick="return confirm('确定删除?')">删除</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

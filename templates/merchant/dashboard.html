@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="/merchant" class="list-group-item active">销售统计</a>
+            <a href="/merchant/products" class="list-group-item">商品管理</a>
+            <a href="/merchant/orders" class="list-group-item">订单管理</a>
+            <a href="/merchant/customers" class="list-group-item">客户与日志</a>
+        </div>
+    </div>
+    <div class="col-md-9 text-center">
+        <div class="row">
+            <div class="col-4"><div class="card p-4 bg-primary text-white"><h5>总金额</h5><h3>￥{{ revenue }}</h3></div></div>
+            <div class="col-4"><div class="card p-4 bg-success text-white"><h5>订单数</h5><h3>{{ o_count }}</h3></div></div>
+            <div class="col-4"><div class="card p-4 bg-info text-white"><h5>商品数</h5><h3>{{ p_count }}</h3></div></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

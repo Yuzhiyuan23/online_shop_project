@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>销售统计报表</h2>
+<div class="alert alert-success">总销售额: ￥{{ revenue }}</div>
+
+<hr>
+<h3>商品管理</h3>
+<form action="/admin/add" method="POST" class="row g-3 mb-4">
+    <div class="col-auto"><input type="text" name="name" class="form-control" placeholder="名称" required></div>
+    <div class="col-auto"><input type="number" name="price" class="form-control" placeholder="价格" step="0.01" required></div>
+    <div class="col-auto"><input type="number" name="stock" class="form-control" placeholder="库存" required></div>
+    <div class="col-auto"><button type="submit" class="btn btn-success">添加商品</button></div>
+</form>
+
+<table class="table table-white">
+    <tr><th>ID</th><th>名称</th><th>价格</th><th>库存</th><th>操作</th></tr>
+    {% for p in products %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price }}</td>
+        <td>{{ p.stock }}</td>
+        <td><a href="/admin/delete/{{ p.id }}" class="text-danger">删除</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

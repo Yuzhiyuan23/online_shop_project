@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">平台超级管理后台 (Admin)</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-primary p-3 shadow-sm">
+                <h4 class="text-primary">所有商家</h4>
+                <table class="table table-hover mt-3">
+                    <thead><tr><th>ID</th><th>商家名</th><th>邮箱</th></tr></thead>
+                    <tbody>
+                        {% for m in merchants %}
+                        <tr><td>{{ m.id }}</td><td>{{ m.username }}</td><td>{{ m.email }}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-success p-3 shadow-sm">
+                <h4 class="text-success">所有顾客</h4>
+                <table class="table table-hover mt-3">
+                    <thead><tr><th>ID</th><th>用户名</th><th>邮箱</th></tr></thead>
+                    <tbody>
+                        {% for c in customers %}
+                        <tr><td>{{ c.id }}</td><td>{{ c.username }}</td><td>{{ c.email }}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

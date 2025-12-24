@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <h4>已注册客户清单</h4>
+        <ul class="list-group">
+            {% for c in customers %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ c.username }}
+                <span class="badge bg-secondary">{{ c.email }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <h4>客户活动日志 (浏览/购买)</h4>
+        <div style="height: 500px; overflow-y: auto;">
+            <table class="table table-sm table-striped small">
+                <thead><tr><th>用户</th><th>操作</th><th>详情</th><th>时间</th></tr></thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{ log.username }}</td>
+                        <td><span class="badge {% if log.action=='购买' %}bg-danger{% else %}bg-info{% endif %}">{{ log.action }}</span></td>
+                        <td>{{ log.details }}</td>
+                        <td>{{ log.created_at.strftime('%m-%d %H:%M') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

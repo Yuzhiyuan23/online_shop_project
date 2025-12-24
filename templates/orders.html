@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h3 class="mb-4">我的购物订单</h3>
+    <table class="table table-bordered bg-white shadow-sm">
+        <thead class="table-light">
+            <tr>
+                <th>订单ID</th><th>卖家商家</th><th>总金额</th><th>状态</th><th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in orders %}
+            <tr>
+                <td>#{{ data.o.id }}</td>
+                <td>{{ data.m_name }}</td>
+                <td class="text-danger">￥{{ data.o.total_price }}</td>
+                <td>
+                    {% if data.o.status == '待发货' %}
+                        <span class="badge bg-warning text-dark">等待卖家发货</span>
+                    {% elif data.o.status == '待收货' %}
+                        <span class="badge bg-primary">卖家已发货</span>
+                    {% else %}
+                        <span class="badge bg-success">交易已完成</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if data.o.status == '待收货' %}
+                        <a href="/customer/confirm_receipt/{{ data.o.id }}" class="btn btn-sm btn-success">确认收货</a>
+                    {% elif data.o.status == '待发货' %}
+                        <span class="text-muted small">请等待发货</span>
+                    {% else %}
+                        <i class="text-muted small">感谢好评</i>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

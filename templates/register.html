@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4 card p-4">
+        <h3>用户注册</h3>
+        <form method="POST">
+            <div class="mb-2"><label>用户名</label><input type="text" name="username" class="form-control" required></div>
+            <div class="mb-2"><label>邮箱</label><input type="email" name="email" class="form-control" required></div>
+            <div class="mb-2"><label>密码</label><input type="password" name="password" class="form-control" required></div>
+            <div class="mb-3"><label>身份</label>
+                <select name="role" class="form-select">
+                    <option value="customer">我是顾客</option>
+                    <option value="merchant">我是商家</option>
+                </select>
+            </div>
+            <button class="btn btn-primary w-100">注册</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

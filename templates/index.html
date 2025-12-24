@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">全站商品目录</h2>
+<div class="row">
+    {% for p in products %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <span class="badge bg-info text-dark mb-2">店铺: {{ p.owner.username }}</span>
+                <h5 class="card-title">{{ p.name }}</h5>
+                <p class="text-muted small">{{ p.description }}</p>
+                <h4 class="text-danger">￥{{ p.price }}</h4>
+                <form action="/add_to_cart/{{ p.id }}" method="POST">
+                    <input type="number" name="quantity" value="1" min="1" class="form-control mb-2 mx-auto text-center" style="width: 80px;">
+                    <button type="submit" class="btn btn-primary w-100">加入购物车</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
