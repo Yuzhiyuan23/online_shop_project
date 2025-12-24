@@ -32,7 +32,7 @@ pip install flask flask_sqlalchemy flask_login pymysql
 3. 数据库配置
 登录 MySQL 终端，创建一个空的数据库：
 CREATE DATABASE online_shop DEFAULT CHARACTER SET utf8mb4;
-打开 app.py 文件，修改第 10 行 的数据库连接字符串，填入你的 MySQL 用户名和密码：
+打开 app.py 文件，修改第 10 行 的数据库连接字符串，填入你的 MySQL 用户名和密码，可能需要替换localhost：
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://用户名:密码@localhost/online_shop'
 4. 启动程序
 在终端运行：
